@@ -24,16 +24,16 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
         zIndex: 900,
         padding: scrolled ? '0.75rem 0' : '1.25rem 0',
         backgroundColor: scrolled 
-          ? (theme === 'dark' ? 'rgba(9, 13, 22, 0.85)' : 'rgba(248, 250, 252, 0.85)')
+          ? (theme === 'dark' ? 'rgba(9, 13, 22, 0.88)' : 'rgba(241, 245, 249, 0.88)')
           : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border-subtle)' : '1px solid transparent',
         transition: 'var(--transition)'
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
         {/* Monogram / Brand */}
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
           <div style={{
             width: '40px',
             height: '40px',
@@ -63,8 +63,8 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
 
         {/* Availability Pill - Desktop */}
         <div 
-          className="badge badge-emerald" 
-          style={{ display: 'flex', cursor: 'pointer' }}
+          className="badge badge-emerald availability-pill" 
+          style={{ display: 'flex', cursor: 'pointer', flexShrink: 0 }}
           onClick={onCopyEmail}
           title="Click to copy email"
         >
@@ -79,7 +79,7 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
         </div>
 
         {/* Navigation Links - Desktop */}
-        <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }}>
+        <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.4rem' }}>
           <a href="#projects" className="nav-link">Projects</a>
           <a href="#sandbox" className="nav-link">Live Sandbox</a>
           <a href="#services" className="nav-link">Services</a>
@@ -89,7 +89,7 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
         </nav>
 
         {/* Actions CTA & Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
           {/* Theme Toggle Button */}
           <button
             onClick={onToggleTheme}
@@ -138,12 +138,15 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
         .nav-link {
           color: var(--text-secondary);
           text-decoration: none;
-          font-size: 0.9rem;
+          font-size: 0.88rem;
           font-weight: 500;
           transition: var(--transition);
         }
         .nav-link:hover {
           color: var(--accent-amber);
+        }
+        @media (max-width: 1180px) {
+          .availability-pill { display: none !important; }
         }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
