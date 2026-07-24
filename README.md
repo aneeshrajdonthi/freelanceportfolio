@@ -1,12 +1,14 @@
 # Aneesh Raj Donthi — Bespoke AI & Data Systems Engineering Portfolio
 
-[![Live Demo](https://img.shields.io/badge/Live_Portfolio-Vercel-f59e0b.svg?style=for-the-badge&logo=vercel)](https://freelanceportfolio-aneeshrajdonthi.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live_Portfolio-Vercel-f59e0b.svg?style=for-the-badge&logo=vercel)](https://freelanceportfolio-teal.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-aneeshrajdonthi-06b6d4.svg?style=for-the-badge&logo=github)](https://github.com/aneeshrajdonthi)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Aneesh_Raj_Donthi-0077b5.svg?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/aneeshrajdonthi)
 
 A bespoke, non-AI-generated freelance portfolio and engineering showcase for **Aneesh Raj Donthi** (AI Engineer @ Tata Electronics | NIT Warangal '25). 
 
-![Portfolio Dashboard Preview](public/portfolio-preview.png)
+🌐 **Live Production App:** [https://freelanceportfolio-teal.vercel.app/](https://freelanceportfolio-teal.vercel.app/)
+
+![Portfolio Dashboard Preview](https://raw.githubusercontent.com/aneeshrajdonthi/freelanceportfolio/main/public/portfolio-preview.png)
 
 ---
 
