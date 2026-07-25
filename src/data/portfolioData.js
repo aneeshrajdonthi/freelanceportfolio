@@ -24,7 +24,7 @@ export const projects = [
     featured: true,
     hasVideo: true,
     videoUrl: "/videos/rag-portal.mp4",
-    poster: "/profilepic.jpg",
+    poster: "/rag_portal_video_cover.jpg",
     githubUrl: "https://github.com/aneeshrajdonthi/rag-portal",
     liveUrl: "",
     problem: "Enterprise legal and HR documents are dense and unsearchable. Raw LLM Q&A without strict vector retrieval results in unverified hallucinations, lack of citations, and context overflow.",
