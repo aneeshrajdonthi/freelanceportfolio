@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, Phone, MessageSquare, Linkedin, Github, Check, Copy, ExternalLink, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageSquare, Linkedin, Github, Check, Copy, ExternalLink } from 'lucide-react';
 
 export default function ContactSection({ onCopyEmail, emailCopied }) {
   const [phoneCopied, setPhoneCopied] = useState(false);
@@ -14,7 +14,7 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
   };
 
   return (
-    <section id="contact" style={{ padding: '5.5rem 0', backgroundColor: '#060a12', borderTop: '1px solid #1e293b' }}>
+    <section id="contact" style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}>
       <div className="container">
         
         <div className="section-header">
@@ -27,41 +27,41 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '1.75rem'
         }}>
 
           {/* Card 1: Direct Mobile & WhatsApp */}
-          <div className="glass-card" style={{ padding: '2rem', border: '1px solid #10b981', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-emerald)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                 <div style={{
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                  backgroundColor: 'var(--accent-emerald-glow)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <Phone size={22} color="#10b981" />
+                  <Phone size={22} color="var(--accent-emerald)" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#f8fafc', fontSize: '1.05rem' }}>Phone & WhatsApp</div>
-                  <div style={{ fontSize: '0.75rem', color: '#10b981', fontFamily: 'var(--font-mono)' }}>Instant Response</div>
+                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Phone & WhatsApp</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', fontFamily: 'var(--font-mono)' }}>Instant Response</div>
                 </div>
               </div>
 
               <div style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '1.1rem',
+                fontSize: '1.05rem',
                 fontWeight: 700,
-                color: '#f8fafc',
-                backgroundColor: '#090d16',
+                color: 'var(--text-primary)',
+                backgroundColor: 'var(--bg-primary)',
                 padding: '0.85rem 1rem',
                 borderRadius: 'var(--radius-sm)',
-                border: '1px solid #1e293b',
+                border: '1px solid var(--border-subtle)',
                 marginBottom: '1.25rem'
               }}>
                 {phoneNumber}
@@ -96,36 +96,36 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
           </div>
 
           {/* Card 2: Direct Email */}
-          <div className="glass-card" style={{ padding: '2rem', border: '1px solid #f59e0b', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-amber)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                 <div style={{
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                  backgroundColor: 'var(--accent-amber-glow)',
                   border: '1px solid rgba(245, 158, 11, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <Mail size={22} color="#f59e0b" />
+                  <Mail size={22} color="var(--accent-amber)" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#f8fafc', fontSize: '1.05rem' }}>Direct Email</div>
-                  <div style={{ fontSize: '0.75rem', color: '#f59e0b', fontFamily: 'var(--font-mono)' }}>Within 24 Hours</div>
+                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Direct Email</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontFamily: 'var(--font-mono)' }}>Within 24 Hours</div>
                 </div>
               </div>
 
               <div style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.9rem',
+                fontSize: '0.85rem',
                 fontWeight: 600,
-                color: '#f59e0b',
-                backgroundColor: '#090d16',
+                color: 'var(--accent-amber)',
+                backgroundColor: 'var(--bg-primary)',
                 padding: '0.85rem 1rem',
                 borderRadius: 'var(--radius-sm)',
-                border: '1px solid #1e293b',
+                border: '1px solid var(--border-subtle)',
                 marginBottom: '1.25rem',
                 wordBreak: 'break-all'
               }}>
@@ -159,24 +159,24 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
           </div>
 
           {/* Card 3: Professional Profiles */}
-          <div className="glass-card" style={{ padding: '2rem', border: '1px solid #06b6d4', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-cyan)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                 <div style={{
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(6, 182, 212, 0.15)',
+                  backgroundColor: 'var(--accent-cyan-glow)',
                   border: '1px solid rgba(6, 182, 212, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
                 }}>
-                  <Linkedin size={22} color="#06b6d4" />
+                  <Linkedin size={22} color="var(--accent-cyan)" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#f8fafc', fontSize: '1.05rem' }}>Professional Profiles</div>
-                  <div style={{ fontSize: '0.75rem', color: '#06b6d4', fontFamily: 'var(--font-mono)' }}>LinkedIn & GitHub</div>
+                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Professional Profiles</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)' }}>LinkedIn & GitHub</div>
                 </div>
               </div>
 
@@ -193,7 +193,7 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
                 className="btn btn-secondary" 
                 style={{ width: '100%', padding: '0.65rem', justifyContent: 'flex-start' }}
               >
-                <Linkedin size={18} color="#06b6d4" />
+                <Linkedin size={18} color="var(--accent-cyan)" />
                 <span>Connect on LinkedIn</span>
                 <ExternalLink size={14} style={{ marginLeft: 'auto' }} />
               </a>
@@ -205,7 +205,7 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
                 className="btn btn-secondary" 
                 style={{ width: '100%', padding: '0.65rem', justifyContent: 'flex-start' }}
               >
-                <Github size={18} color="#f8fafc" />
+                <Github size={18} color="var(--text-primary)" />
                 <span>Explore GitHub Codebases</span>
                 <ExternalLink size={14} style={{ marginLeft: 'auto' }} />
               </a>
@@ -215,6 +215,14 @@ export default function ContactSection({ onCopyEmail, emailCopied }) {
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .contact-card {
+            padding: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
