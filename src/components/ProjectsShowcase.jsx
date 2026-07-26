@@ -28,13 +28,16 @@ export default function ProjectsShowcase() {
             Battle-tested systems built for real-world enterprise deployment. Inspect live applications, interactive video walkthroughs, system architectures, and technical codebases.
           </p>
 
-          {/* Category Filters */}
+          {/* Category Filters - Horizontal Touch Scrollable */}
           <div style={{
             display: 'flex',
-            flexWrap: 'wrap',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
             gap: '0.6rem',
-            marginTop: '1.75rem'
-          }}>
+            marginTop: '1.75rem',
+            paddingBottom: '0.5rem',
+            WebkitOverflowScrolling: 'touch'
+          }} className="category-scroll-container">
             {categories.map((cat, idx) => (
               <button
                 key={idx}
@@ -45,10 +48,12 @@ export default function ProjectsShowcase() {
                   fontSize: '0.82rem',
                   fontWeight: 600,
                   fontFamily: 'var(--font-mono)',
-                  border: filter === cat ? '1px solid #f59e0b' : '1px solid #1e293b',
-                  backgroundColor: filter === cat ? 'rgba(245, 158, 11, 0.15)' : 'var(--bg-card)',
-                  color: filter === cat ? '#f59e0b' : 'var(--text-secondary)',
+                  border: filter === cat ? '1px solid #f59e0b' : '1px solid var(--border-subtle)',
+                  backgroundColor: filter === cat ? 'var(--accent-amber-glow)' : 'var(--bg-card)',
+                  color: filter === cat ? 'var(--accent-amber)' : 'var(--text-secondary)',
                   cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
                   transition: 'var(--transition)'
                 }}
               >
@@ -72,7 +77,7 @@ export default function ProjectsShowcase() {
                 }} className="project-grid-inner">
                   
                   {/* Left Column (or Full Width): Project Details & Tab Control */}
-                  <div style={{ padding: '2rem' }}>
+                  <div className="project-card-content" style={{ padding: '2rem' }}>
                     
                     {/* Header Badges */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.8rem' }}>
@@ -81,20 +86,22 @@ export default function ProjectsShowcase() {
                     </div>
 
                     {/* Title */}
-                    <h3 style={{ fontSize: '1.6rem', marginBottom: '0.4rem' }}>
+                    <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.6rem)', marginBottom: '0.4rem' }}>
                       {p.title}
                     </h3>
-                    <div style={{ color: '#06b6d4', fontFamily: 'var(--font-mono)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
+                    <div style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: '0.88rem', marginBottom: '1.25rem' }}>
                       {p.subtitle}
                     </div>
 
-                    {/* Tab Navigation */}
+                    {/* Tab Navigation - Scrollable on mobile */}
                     <div style={{
                       display: 'flex',
+                      overflowX: 'auto',
                       gap: '0.5rem',
-                      borderBottom: '1px solid #1e293b',
+                      borderBottom: '1px solid var(--border-subtle)',
                       marginBottom: '1.25rem',
-                      paddingBottom: '0.5rem'
+                      paddingBottom: '0.5rem',
+                      WebkitOverflowScrolling: 'touch'
                     }}>
                       {['overview', 'architecture', 'metrics', 'deliverables'].map((tab) => (
                         <button
@@ -107,10 +114,12 @@ export default function ProjectsShowcase() {
                             fontSize: '0.8rem',
                             fontWeight: 600,
                             fontFamily: 'var(--font-mono)',
-                            color: currentTab === tab ? '#f59e0b' : 'var(--text-muted)',
-                            borderBottom: currentTab === tab ? '2px solid #f59e0b' : '2px solid transparent',
+                            color: currentTab === tab ? 'var(--accent-amber)' : 'var(--text-muted)',
+                            borderBottom: currentTab === tab ? '2px solid var(--accent-amber)' : '2px solid transparent',
                             cursor: 'pointer',
-                            textTransform: 'capitalize'
+                            textTransform: 'capitalize',
+                            whiteSpace: 'nowrap',
+                            flexShrink: 0
                           }}
                         >
                           {tab}
@@ -123,11 +132,11 @@ export default function ProjectsShowcase() {
                       {currentTab === 'overview' && (
                         <div>
                           <div style={{ marginBottom: '0.75rem' }}>
-                            <strong style={{ color: '#e2e8f0', fontSize: '0.9rem' }}>The Challenge:</strong>
+                            <strong style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>The Challenge:</strong>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginTop: '0.25rem' }}>{p.problem}</p>
                           </div>
                           <div>
-                            <strong style={{ color: '#e2e8f0', fontSize: '0.9rem' }}>The Solution:</strong>
+                            <strong style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>The Solution:</strong>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginTop: '0.25rem' }}>{p.solution}</p>
                           </div>
                         </div>
@@ -135,13 +144,13 @@ export default function ProjectsShowcase() {
 
                       {currentTab === 'architecture' && (
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.88rem', color: '#f8fafc', marginBottom: '0.5rem' }}>
+                          <div style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
                             Key System Engineering Highlights:
                           </div>
                           <ul style={{ listStyle: 'none', padding: 0 }}>
                             {p.highlights.map((h, i) => (
                               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                                <CheckCircle2 size={16} color="#10b981" style={{ marginTop: '2px', flexShrink: 0 }} />
+                                <CheckCircle2 size={16} color="var(--accent-emerald)" style={{ marginTop: '2px', flexShrink: 0 }} />
                                 <span>{h}</span>
                               </li>
                             ))}
@@ -150,16 +159,16 @@ export default function ProjectsShowcase() {
                       )}
 
                       {currentTab === 'metrics' && (
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: '0.75rem' }}>
                           {p.keyMetrics.map((m, i) => (
                             <div key={i} style={{
                               padding: '0.6rem 0.8rem',
-                              backgroundColor: 'rgba(255,255,255,0.03)',
-                              border: '1px solid #1e293b',
+                              backgroundColor: 'var(--bg-secondary)',
+                              border: '1px solid var(--border-subtle)',
                               borderRadius: 'var(--radius-sm)',
                               fontFamily: 'var(--font-mono)',
                               fontSize: '0.82rem',
-                              color: '#06b6d4'
+                              color: 'var(--accent-cyan)'
                             }}>
                               ⚡ {m}
                             </div>
@@ -169,13 +178,13 @@ export default function ProjectsShowcase() {
 
                       {currentTab === 'deliverables' && (
                         <div>
-                          <div style={{ fontWeight: 600, fontSize: '0.88rem', color: '#f8fafc', marginBottom: '0.5rem' }}>
+                          <div style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
                             Custom Client Deliverables Built From This Architecture:
                           </div>
                           <ul style={{ listStyle: 'none', padding: 0 }}>
                             {p.freelanceUseCases.map((u, i) => (
-                              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.88rem', color: '#f59e0b' }}>
-                                <Sparkles size={14} />
+                              <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.88rem', color: 'var(--accent-amber)' }}>
+                                <Sparkles size={14} style={{ flexShrink: 0 }} />
                                 <span>{u}</span>
                               </li>
                             ))}
@@ -194,16 +203,16 @@ export default function ProjectsShowcase() {
                     </div>
 
                     {/* Actions Links */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }} className="project-actions">
                       {p.liveUrl && (
-                        <a href={p.liveUrl} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
+                        <a href={p.liveUrl} target="_blank" rel="noreferrer" className="btn btn-primary proj-btn" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
                           <span>Launch Live App</span>
                           <ExternalLink size={15} />
                         </a>
                       )}
 
                       {p.githubUrl && (
-                        <a href={p.githubUrl} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
+                        <a href={p.githubUrl} target="_blank" rel="noreferrer" className="btn btn-secondary proj-btn" style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}>
                           <Github size={15} />
                           <span>View Source Code</span>
                         </a>
@@ -212,8 +221,8 @@ export default function ProjectsShowcase() {
                       {p.hasVideo && (
                         <button 
                           onClick={() => setVideoModalUrl(p.videoUrl)}
-                          className="btn btn-outline"
-                          style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
+                          className="btn btn-outline proj-btn"
+                          style={{ padding: '0.55rem 1rem', fontSize: '0.85rem' }}
                         >
                           <Play size={15} />
                           <span>Watch Video Demo</span>
@@ -225,9 +234,9 @@ export default function ProjectsShowcase() {
 
                   {/* Right Column: Embedded Video Showcase Player (If Available) */}
                   {p.hasVideo && (
-                    <div style={{
-                      backgroundColor: '#090d16',
-                      borderLeft: '1px solid #1e293b',
+                    <div className="project-video-container" style={{
+                      backgroundColor: 'var(--bg-primary)',
+                      borderLeft: '1px solid var(--border-subtle)',
                       padding: '1.5rem',
                       display: 'flex',
                       flexDirection: 'column',
@@ -237,8 +246,8 @@ export default function ProjectsShowcase() {
                         position: 'relative',
                         borderRadius: 'var(--radius-md)',
                         overflow: 'hidden',
-                        border: '1px solid #334155',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                        border: '1px solid var(--border-glow)',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
                       }}>
                         <video 
                           controls 
@@ -251,15 +260,15 @@ export default function ProjectsShowcase() {
 
                         <div style={{
                           padding: '0.75rem 1rem',
-                          backgroundColor: '#131b2e',
-                          borderTop: '1px solid #1e293b',
+                          backgroundColor: 'var(--bg-card)',
+                          borderTop: '1px solid var(--border-subtle)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
                           fontSize: '0.78rem',
                           fontFamily: 'var(--font-mono)'
                         }}>
-                          <span style={{ color: '#f59e0b' }}>🎥 RAG Portal Walkthrough</span>
+                          <span style={{ color: 'var(--accent-amber)' }}>🎥 {p.title} Walkthrough</span>
                           <span style={{ color: 'var(--text-muted)' }}>1080p HD</span>
                         </div>
                       </div>
@@ -282,45 +291,45 @@ export default function ProjectsShowcase() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(0,0,0,0.88)',
           backdropFilter: 'blur(12px)',
           zIndex: 1000,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '2rem'
+          padding: '1rem'
         }}>
           <div style={{
             position: 'relative',
             width: '100%',
             maxWidth: '900px',
-            backgroundColor: '#131b2e',
-            border: '1px solid #334155',
+            backgroundColor: 'var(--bg-card)',
+            border: '1px solid var(--border-glow)',
             borderRadius: 'var(--radius-lg)',
             overflow: 'hidden',
             boxShadow: '0 25px 60px rgba(0,0,0,0.8)'
           }}>
             <div style={{
-              padding: '1rem 1.5rem',
-              borderBottom: '1px solid #1e293b',
+              padding: '0.85rem 1.25rem',
+              borderBottom: '1px solid var(--border-subtle)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between'
             }}>
-              <div style={{ fontWeight: 700, color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Play size={18} color="#f59e0b" />
+              <div style={{ fontWeight: 700, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem' }}>
+                <Play size={18} color="var(--accent-amber)" />
                 <span>Full System Demo & Architecture Walkthrough</span>
               </div>
               <button 
                 onClick={() => setVideoModalUrl(null)}
-                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', padding: '0.25rem' }}
               >
                 <X size={24} />
               </button>
             </div>
 
-            <div style={{ padding: '1rem', backgroundColor: '#090d16' }}>
-              <video controls autoPlay style={{ width: '100%', borderRadius: 'var(--radius-md)' }}>
+            <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-primary)' }}>
+              <video controls autoPlay style={{ width: '100%', borderRadius: 'var(--radius-md)', maxHeight: '70vh' }}>
                 <source src={videoModalUrl} type="video/mp4" />
               </video>
             </div>
@@ -332,6 +341,22 @@ export default function ProjectsShowcase() {
         @media (max-width: 960px) {
           .project-grid-inner {
             grid-template-columns: 1fr !important;
+          }
+          .project-video-container {
+            border-left: none !important;
+            border-top: 1px solid var(--border-subtle) !important;
+          }
+          .project-card-content {
+            padding: 1.25rem !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .project-actions {
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          .proj-btn {
+            width: 100% !important;
           }
         }
       `}</style>
