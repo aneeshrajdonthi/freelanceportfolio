@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Menu, X, Copy, Check, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, Copy, Check, Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -14,18 +14,23 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
+  // Prevent background scroll when mobile menu is open, restore properly when closed
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.removeProperty('overflow');
     }
+    return () => {
+      document.body.style.removeProperty('overflow');
+    };
   }, [mobileMenuOpen]);
 
-  const handleNavClick = (e, targetId) => {
+  const handleNavClick = (targetId) => {
     setMobileMenuOpen(false);
-    if (targetId.startsWith('#')) {
+    if (targetId === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (targetId.startsWith('#')) {
       const element = document.querySelector(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -56,7 +61,7 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
         {/* Monogram / Brand */}
         <a 
           href="#" 
-          onClick={(e) => handleNavClick(e, '#')} 
+          onClick={(e) => { e.preventDefault(); handleNavClick('#'); }} 
           style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}
         >
           <div style={{
@@ -105,12 +110,12 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
 
         {/* Navigation Links - Desktop */}
         <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.4rem' }}>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#sandbox" className="nav-link">Live Sandbox</a>
-          <a href="#services" className="nav-link">Services</a>
-          <a href="#estimator" className="nav-link">Custom Brief</a>
-          <a href="#experience" className="nav-link">Experience</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className="nav-link">Projects</a>
+          <a href="#sandbox" onClick={(e) => { e.preventDefault(); handleNavClick('#sandbox'); }} className="nav-link">Live Sandbox</a>
+          <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('#services'); }} className="nav-link">Services</a>
+          <a href="#estimator" onClick={(e) => { e.preventDefault(); handleNavClick('#estimator'); }} className="nav-link">Custom Brief</a>
+          <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('#experience'); }} className="nav-link">Experience</a>
+          <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className="nav-link">Contact</a>
         </nav>
 
         {/* Actions CTA & Theme Toggle */}
@@ -181,22 +186,22 @@ export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme 
 
             {/* Links */}
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <a href="#projects" onClick={(e) => handleNavClick(e, '#projects')} className="mobile-nav-link">
+              <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className="mobile-nav-link">
                 ⚡ Projects Showcase
               </a>
-              <a href="#sandbox" onClick={(e) => handleNavClick(e, '#sandbox')} className="mobile-nav-link">
+              <a href="#sandbox" onClick={(e) => { e.preventDefault(); handleNavClick('#sandbox'); }} className="mobile-nav-link">
                 🛡️ Live Security Sandbox
               </a>
-              <a href="#services" onClick={(e) => handleNavClick(e, '#services')} className="mobile-nav-link">
+              <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('#services'); }} className="mobile-nav-link">
                 🤖 Core Services
               </a>
-              <a href="#estimator" onClick={(e) => handleNavClick(e, '#estimator')} className="mobile-nav-link">
+              <a href="#estimator" onClick={(e) => { e.preventDefault(); handleNavClick('#estimator'); }} className="mobile-nav-link">
                 📝 Custom Project Brief
               </a>
-              <a href="#experience" onClick={(e) => handleNavClick(e, '#experience')} className="mobile-nav-link">
+              <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('#experience'); }} className="mobile-nav-link">
                 💼 Experience & R&D
               </a>
-              <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')} className="mobile-nav-link">
+              <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className="mobile-nav-link">
                 📧 Contact & Channels
               </a>
             </nav>
