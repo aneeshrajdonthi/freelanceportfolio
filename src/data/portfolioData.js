@@ -16,6 +16,39 @@ export const personalInfo = {
 
 export const projects = [
   {
+    id: "driftshield-ai",
+    title: "DriftShield AI",
+    subtitle: "Real-Time Fraud Detection & MLOps Concept Drift Portal",
+    category: "ML & Real-Time Data",
+    badge: "Featured Walkthrough Video",
+    featured: true,
+    hasVideo: true,
+    videoUrl: "/videos/driftshield-ai.mp4",
+    poster: "/driftshield_video_cover.jpg",
+    githubUrl: "https://github.com/aneeshrajdonthi/driftshield-ai",
+    liveUrl: "https://driftshield-ai-theta.vercel.app/",
+    problem: "Production machine learning models suffer silent degradation when incoming real-world transaction patterns shift (concept drift), leading to missed fraud detection and costly false positives.",
+    solution: "Built a production-grade MLOps monitoring platform. Features real-time SSE transaction streaming, Isolation Forest outlier classification (<10ms), Kolmogorov-Smirnov statistical testing for covariate shift detection, and automated challenger model retraining loops.",
+    techStack: ["FastAPI", "React (Vite)", "Scikit-Learn", "SciPy (KS-test)", "Pandas", "NumPy", "Gemini 2.5 Flash", "Docker", "Nginx"],
+    keyMetrics: [
+      "<10ms Inference Latency",
+      "Kolmogorov-Smirnov Drift Test",
+      "2D Incremental PCA Clustering",
+      "Automated Challenger Retraining"
+    ],
+    highlights: [
+      "Server-Sent Events (SSE) stream evaluate transaction vectors under 10ms latency",
+      "Statistical two-sample Kolmogorov-Smirnov test flags feature distribution shifts automatically",
+      "Side-by-side Champion vs. Challenger shadow model benchmarking before live promotion",
+      "Gemini 2.5 Flash automated operational diagnostic reports generated upon drift detection"
+    ],
+    freelanceUseCases: [
+      "Real-Time Financial Anomaly & Credit Card Fraud Engines",
+      "Production ML Model Health Monitoring & Retraining Automation",
+      "High-Dimensional Data Visualizers & Executive Dashboards"
+    ]
+  },
+  {
     id: "rag-portal",
     title: "Enterprise Document RAG & Cited Semantic Search Portal",
     subtitle: "Production Hybrid SQLite + ChromaDB Vector Engine",
@@ -108,37 +141,6 @@ export const projects = [
       "Autonomous Enterprise Task Agents & Workflow Automation",
       "Serverless AI Microservice Development",
       "Distributed LLM Orchestration Pipelines"
-    ]
-  },
-  {
-    id: "driftshield-ai",
-    title: "DriftShield AI",
-    subtitle: "Real-Time Fraud Detection & MLOps Concept Drift Portal",
-    category: "ML & Real-Time Data",
-    badge: "Live Production Vercel App",
-    featured: true,
-    hasVideo: false,
-    githubUrl: "https://github.com/aneeshrajdonthi/driftshield-ai",
-    liveUrl: "https://driftshield-ai-theta.vercel.app/",
-    problem: "Production machine learning models suffer silent degradation when incoming real-world transaction patterns shift (concept drift), leading to missed fraud detection and costly false positives.",
-    solution: "Built a production-grade MLOps monitoring platform. Features real-time SSE transaction streaming, Isolation Forest outlier classification (<10ms), Kolmogorov-Smirnov statistical testing for covariate shift detection, and automated challenger model retraining loops.",
-    techStack: ["FastAPI", "React (Vite)", "Scikit-Learn", "SciPy (KS-test)", "Pandas", "NumPy", "Gemini 2.5 Flash", "Docker", "Nginx"],
-    keyMetrics: [
-      "<10ms Inference Latency",
-      "Kolmogorov-Smirnov Drift Test",
-      "2D Incremental PCA Clustering",
-      "Automated Challenger Retraining"
-    ],
-    highlights: [
-      "Server-Sent Events (SSE) stream evaluate transaction vectors under 10ms latency",
-      "Statistical two-sample Kolmogorov-Smirnov test flags feature distribution shifts automatically",
-      "Side-by-side Champion vs. Challenger shadow model benchmarking before live promotion",
-      "Gemini 2.5 Flash automated operational diagnostic reports generated upon drift detection"
-    ],
-    freelanceUseCases: [
-      "Real-Time Financial Anomaly & Credit Card Fraud Engines",
-      "Production ML Model Health Monitoring & Retraining Automation",
-      "High-Dimensional Data Visualizers & Executive Dashboards"
     ]
   },
   {
