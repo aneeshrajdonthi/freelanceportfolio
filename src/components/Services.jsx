@@ -1,102 +1,82 @@
 import React from 'react';
 import { services } from '../data/portfolioData';
-import { ShieldAlert, Database, Activity, Bot, Mic, Eye, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Bot, Mic, Database, ShieldAlert, Eye, Activity } from 'lucide-react';
+
+const iconMap = { Bot, Mic, Database, ShieldAlert, Eye, Activity };
 
 export default function Services() {
-  const getIcon = (iconName) => {
-    switch (iconName) {
-      case 'Bot': return <Bot size={26} color="#f59e0b" />;
-      case 'Mic': return <Mic size={26} color="#06b6d4" />;
-      case 'Database': return <Database size={26} color="#10b981" />;
-      case 'ShieldAlert': return <ShieldAlert size={26} color="#ef4444" />;
-      case 'Eye': return <Eye size={26} color="#a855f7" />;
-      case 'Activity': return <Activity size={26} color="#3b82f6" />;
-      default: return <Database size={26} color="#f59e0b" />;
-    }
-  };
-
   return (
-    <section id="services" style={{ padding: '5.5rem 0' }}>
+    <section id="services" className="section" style={{ borderTop: '1px solid var(--border-subtle)' }}>
       <div className="container">
-        
-        {/* Section Header */}
-        <div className="section-header">
-          <span className="tag">// FREELANCE SERVICES & ENGINEERING CAPABILITIES</span>
-          <h2>Full-Spectrum AI & Data Engineering</h2>
-          <p>
-            I deliver end-to-end custom production systems across Autonomous Agents, Voice AI, RAG Search, Computer Vision, Real-Time Streaming, and Machine Learning.
-          </p>
-        </div>
+        <p className="section-label">Services</p>
+        <h2 className="section-title">What I can build for you</h2>
+        <p className="section-desc">
+          End-to-end AI and data engineering — from prototype to production deployment.
+        </p>
 
-        {/* Services Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem'
-        }}>
-          {services.map((s) => (
-            <div key={s.id} className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <div>
-                {/* Header Icon & Title */}
-                <div style={{
-                  width: '54px',
-                  height: '54px',
-                  borderRadius: '12px',
-                  backgroundColor: 'rgba(255,255,255,0.03)',
-                  border: '1px solid #1e293b',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.25rem'
-                }}>
-                  {getIcon(s.icon)}
+        <div className="services-grid">
+          {services.map(s => {
+            const Icon = iconMap[s.icon];
+            return (
+              <div key={s.id} className="card service-card">
+                <div className="service-icon">
+                  {Icon && <Icon size={20} />}
                 </div>
-
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.6rem' }}>
-                  {s.title}
-                </h3>
-
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-                  {s.tagline}
-                </p>
-
-                {/* Deliverables Checklist */}
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <div style={{ fontWeight: 600, fontSize: '0.82rem', fontFamily: 'var(--font-mono)', color: '#f8fafc', marginBottom: '0.6rem' }}>
-                    TECHNICAL DELIVERABLES:
-                  </div>
-                  <ul style={{ listStyle: 'none', padding: 0 }}>
-                    {s.deliverables.map((d, i) => (
-                      <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', marginBottom: '0.4rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                        <CheckCircle2 size={15} color="#10b981" style={{ marginTop: '2px', flexShrink: 0 }} />
-                        <span>{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Tech Badges & CTA */}
-              <div style={{ borderTop: '1px solid #1e293b', paddingTop: '1.25rem', marginTop: '1rem' }}>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1rem' }}>
-                  {s.tech.map((t, idx) => (
-                    <span key={idx} className="badge badge-subtle" style={{ fontSize: '0.7rem' }}>
-                      {t}
-                    </span>
+                <h3 className="service-title">{s.title}</h3>
+                <p className="service-desc">{s.description}</p>
+                <div className="service-tech">
+                  {s.tech.map((t, i) => (
+                    <span key={i} className="badge badge-muted">{t}</span>
                   ))}
                 </div>
-
-                <a href="#estimator" className="btn btn-secondary" style={{ width: '100%', padding: '0.6rem', fontSize: '0.85rem' }}>
-                  <span>Configure Proposal Scope</span>
-                  <ArrowRight size={14} />
-                </a>
               </div>
-
-            </div>
-          ))}
+            );
+          })}
         </div>
-
       </div>
+
+      <style>{`
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+          margin-top: 3rem;
+        }
+        .service-card {
+          padding: 1.75rem;
+          display: flex; flex-direction: column;
+        }
+        .service-icon {
+          width: 40px; height: 40px;
+          border-radius: var(--radius-sm);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-subtle);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--accent-amber);
+          margin-bottom: 1.25rem;
+        }
+        [data-theme="light"] .service-icon {
+          color: var(--accent-cyan);
+        }
+        .service-title {
+          font-size: 1.05rem; margin-bottom: 0.5rem;
+        }
+        .service-desc {
+          color: var(--text-secondary); font-size: 0.88rem;
+          line-height: 1.65; margin-bottom: 1.25rem;
+          flex: 1;
+        }
+        .service-tech {
+          display: flex; flex-wrap: wrap; gap: 0.25rem;
+        }
+        @media (max-width: 900px) {
+          .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+          .services-grid { grid-template-columns: 1fr; }
+          .service-card { padding: 1.5rem; }
+        }
+      `}</style>
     </section>
   );
 }

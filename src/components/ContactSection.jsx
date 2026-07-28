@@ -1,227 +1,84 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, Phone, MessageSquare, Linkedin, Github, Check, Copy, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, ArrowUpRight, Copy, Check } from 'lucide-react';
 
 export default function ContactSection({ onCopyEmail, emailCopied }) {
-  const [phoneCopied, setPhoneCopied] = useState(false);
-  const phoneNumber = "+91 9392576787";
-  const whatsappUrl = "https://wa.me/919392576787";
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText(phoneNumber);
-    setPhoneCopied(true);
-    setTimeout(() => setPhoneCopied(false), 3000);
-  };
-
   return (
-    <section id="contact" style={{ padding: '5.5rem 0', backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}>
-      <div className="container">
-        
-        <div className="section-header">
-          <span className="tag">// DIRECT COMMUNICATION & HIRING</span>
-          <h2>Let's Connect & Discuss Your Project</h2>
-          <p>
-            Ready to collaborate? Reach out directly via Phone, WhatsApp, Email, or LinkedIn for fast technical inquiries.
-          </p>
+    <section id="contact" className="section" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+      <div className="container contact-container">
+        <p className="section-label" style={{ textAlign: 'center' }}>Contact</p>
+        <h2 className="section-title" style={{ textAlign: 'center' }}>Let's work together</h2>
+        <p className="section-desc" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
+          Have a project in mind? I'm open to freelance work and select collaborations.
+        </p>
+
+        <div className="contact-links">
+          <a href={`mailto:${personalInfo.email}`} className="contact-row">
+            <Mail size={17} />
+            <span>{personalInfo.email}</span>
+            <button
+              className="copy-btn"
+              onClick={(e) => { e.preventDefault(); onCopyEmail(); }}
+              title="Copy email"
+            >
+              {emailCopied ? <Check size={14} /> : <Copy size={14} />}
+            </button>
+          </a>
+
+          <a href="https://wa.me/919392576787" target="_blank" rel="noreferrer" className="contact-row">
+            <Phone size={17} />
+            <span>{personalInfo.phone}</span>
+            <ArrowUpRight size={14} className="contact-arrow" />
+          </a>
+
+          <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="contact-row">
+            <Linkedin size={17} />
+            <span>LinkedIn</span>
+            <ArrowUpRight size={14} className="contact-arrow" />
+          </a>
+
+          <a href={personalInfo.github} target="_blank" rel="noreferrer" className="contact-row">
+            <Github size={17} />
+            <span>GitHub</span>
+            <ArrowUpRight size={14} className="contact-arrow" />
+          </a>
         </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.75rem'
-        }}>
-
-          {/* Card 1: Direct Mobile & WhatsApp */}
-          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-emerald)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: '12px',
-                  backgroundColor: 'var(--accent-emerald-glow)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Phone size={22} color="var(--accent-emerald)" />
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Phone & WhatsApp</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', fontFamily: 'var(--font-mono)' }}>Instant Response</div>
-                </div>
-              </div>
-
-              <div style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '1.05rem',
-                fontWeight: 700,
-                color: 'var(--text-primary)',
-                backgroundColor: 'var(--bg-primary)',
-                padding: '0.85rem 1rem',
-                borderRadius: 'var(--radius-sm)',
-                border: '1px solid var(--border-subtle)',
-                marginBottom: '1.25rem'
-              }}>
-                {phoneNumber}
-              </div>
-
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-                Direct mobile line for urgent contract calls, project discussions, and WhatsApp messaging.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noreferrer"
-                className="btn btn-primary" 
-                style={{ width: '100%', padding: '0.65rem', backgroundColor: '#10b981', borderColor: '#10b981', color: '#000' }}
-              >
-                <MessageSquare size={16} />
-                <span>Chat on WhatsApp</span>
-              </a>
-
-              <button 
-                onClick={handleCopyPhone}
-                className="btn btn-secondary" 
-                style={{ width: '100%', padding: '0.65rem', fontSize: '0.85rem' }}
-              >
-                {phoneCopied ? <Check size={16} /> : <Copy size={16} />}
-                <span>{phoneCopied ? "Phone Copied!" : "Copy Phone Number"}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Card 2: Direct Email */}
-          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-amber)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: '12px',
-                  backgroundColor: 'var(--accent-amber-glow)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Mail size={22} color="var(--accent-amber)" />
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Direct Email</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-amber)', fontFamily: 'var(--font-mono)' }}>Within 24 Hours</div>
-                </div>
-              </div>
-
-              <div style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-                color: 'var(--accent-amber)',
-                backgroundColor: 'var(--bg-primary)',
-                padding: '0.85rem 1rem',
-                borderRadius: 'var(--radius-sm)',
-                border: '1px solid var(--border-subtle)',
-                marginBottom: '1.25rem',
-                wordBreak: 'break-all'
-              }}>
-                {personalInfo.email}
-              </div>
-
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-                Send your RFPs, architecture specs, or freelance project requirements directly to my inbox.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              <a 
-                href={`mailto:${personalInfo.email}`} 
-                className="btn btn-primary" 
-                style={{ width: '100%', padding: '0.65rem' }}
-              >
-                <Mail size={16} />
-                <span>Send Direct Email</span>
-              </a>
-
-              <button 
-                onClick={onCopyEmail}
-                className="btn btn-secondary" 
-                style={{ width: '100%', padding: '0.65rem', fontSize: '0.85rem' }}
-              >
-                {emailCopied ? <Check size={16} /> : <Copy size={16} />}
-                <span>{emailCopied ? "Email Copied!" : "Copy Email Address"}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Card 3: Professional Profiles */}
-          <div className="glass-card contact-card" style={{ padding: '1.75rem', border: '1px solid var(--accent-cyan)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: '12px',
-                  backgroundColor: 'var(--accent-cyan-glow)',
-                  border: '1px solid rgba(6, 182, 212, 0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <Linkedin size={22} color="var(--accent-cyan)" />
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>Professional Profiles</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)' }}>LinkedIn & GitHub</div>
-                </div>
-              </div>
-
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '1.5rem', lineHeight: 1.6 }}>
-                Connect on LinkedIn for professional engagements or explore source code repositories on GitHub.
-              </p>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              <a 
-                href={personalInfo.linkedin} 
-                target="_blank" 
-                rel="noreferrer"
-                className="btn btn-secondary" 
-                style={{ width: '100%', padding: '0.65rem', justifyContent: 'flex-start' }}
-              >
-                <Linkedin size={18} color="var(--accent-cyan)" />
-                <span>Connect on LinkedIn</span>
-                <ExternalLink size={14} style={{ marginLeft: 'auto' }} />
-              </a>
-
-              <a 
-                href={personalInfo.github} 
-                target="_blank" 
-                rel="noreferrer"
-                className="btn btn-secondary" 
-                style={{ width: '100%', padding: '0.65rem', justifyContent: 'flex-start' }}
-              >
-                <Github size={18} color="var(--text-primary)" />
-                <span>Explore GitHub Codebases</span>
-                <ExternalLink size={14} style={{ marginLeft: 'auto' }} />
-              </a>
-            </div>
-          </div>
-
-        </div>
-
       </div>
 
       <style>{`
-        @media (max-width: 600px) {
-          .contact-card {
-            padding: 1.25rem !important;
-          }
+        .contact-container {
+          max-width: 480px;
         }
+        .contact-links {
+          display: flex; flex-direction: column; gap: 0.6rem;
+        }
+        .contact-row {
+          display: flex; align-items: center; gap: 0.75rem;
+          padding: 0.85rem 1.15rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-sm);
+          color: var(--text-primary);
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: border-color 0.15s ease;
+        }
+        .contact-row:hover {
+          border-color: var(--border-glow);
+        }
+        .contact-arrow {
+          margin-left: auto;
+          color: var(--text-muted);
+          opacity: 0.5;
+        }
+        .copy-btn {
+          margin-left: auto;
+          background: none; border: none;
+          color: var(--text-muted); cursor: pointer;
+          padding: 0.2rem; display: flex;
+          transition: color 0.15s ease;
+        }
+        .copy-btn:hover { color: var(--text-primary); }
       `}</style>
     </section>
   );

@@ -1,277 +1,180 @@
 import React, { useState, useEffect } from 'react';
-import { personalInfo } from '../data/portfolioData';
-import { Menu, X, Copy, Check, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
-export default function Navbar({ onCopyEmail, emailCopied, theme, onToggleTheme }) {
+export default function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open, restore properly when closed
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.removeProperty('overflow');
-    }
-    return () => {
-      document.body.style.removeProperty('overflow');
-    };
-  }, [mobileMenuOpen]);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
-  const handleNavClick = (targetId) => {
-    setMobileMenuOpen(false);
-    if (targetId === '#') {
+  const navigate = (id) => {
+    setMenuOpen(false);
+    if (id === '#top') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (targetId.startsWith('#')) {
-      const element = document.querySelector(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    } else {
+      const el = document.querySelector(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const links = [
+    { label: 'Work', href: '#projects' },
+    { label: 'Services', href: '#services' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   return (
-    <header 
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 990,
-        padding: scrolled ? '0.75rem 0' : '1.1rem 0',
-        backgroundColor: scrolled 
-          ? (theme === 'dark' ? 'rgba(9, 13, 22, 0.92)' : 'rgba(241, 245, 249, 0.92)')
-          : (mobileMenuOpen 
-              ? (theme === 'dark' ? 'rgba(9, 13, 22, 0.98)' : 'rgba(241, 245, 249, 0.98)')
-              : 'transparent'),
-        backdropFilter: 'blur(16px)',
-        borderBottom: (scrolled || mobileMenuOpen) ? '1px solid var(--border-subtle)' : '1px solid transparent',
-        transition: 'var(--transition)'
-      }}
-    >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-        {/* Monogram / Brand */}
-        <a 
-          href="#" 
-          onClick={(e) => { e.preventDefault(); handleNavClick('#'); }} 
-          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <div className="container nav-inner">
+        <a
+          href="#"
+          onClick={(e) => { e.preventDefault(); navigate('#top'); }}
+          className="nav-brand"
         >
-          <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '10px',
-            background: 'linear-gradient(135deg, #131b2e 0%, #1e293b 100%)',
-            border: '1px solid #334155',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontWeight: 800,
-            fontFamily: 'var(--font-heading)',
-            color: '#f59e0b',
-            fontSize: '1.1rem',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-          }}>
-            AR
-          </div>
-          <div>
-            <div style={{ fontWeight: 700, fontSize: '0.98rem', color: 'var(--text-primary)', lineHeight: 1.2 }}>
-              Aneesh Raj Donthi
-            </div>
-            <div style={{ fontSize: '0.72rem', color: '#06b6d4', fontFamily: 'var(--font-mono)' }}>
-              AI Engineer @ Tata Electronics
-            </div>
-          </div>
+          Aneesh Raj
         </a>
 
-        {/* Availability Pill - Desktop */}
-        <div 
-          className="badge badge-emerald availability-pill" 
-          style={{ display: 'flex', cursor: 'pointer', flexShrink: 0 }}
-          onClick={onCopyEmail}
-          title="Click to copy email"
-        >
-          <span style={{
-            width: '8px',
-            height: '8px',
-            borderRadius: '50%',
-            backgroundColor: '#10b981',
-            boxShadow: '0 0 8px #10b981'
-          }}></span>
-          <span>Available for Select Contracts</span>
-        </div>
-
-        {/* Navigation Links - Desktop */}
-        <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.4rem' }}>
-          <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className="nav-link">Projects</a>
-          <a href="#sandbox" onClick={(e) => { e.preventDefault(); handleNavClick('#sandbox'); }} className="nav-link">Live Sandbox</a>
-          <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('#services'); }} className="nav-link">Services</a>
-          <a href="#estimator" onClick={(e) => { e.preventDefault(); handleNavClick('#estimator'); }} className="nav-link">Custom Brief</a>
-          <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('#experience'); }} className="nav-link">Experience</a>
-          <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className="nav-link">Contact</a>
+        <nav className="nav-links">
+          {links.map(l => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => { e.preventDefault(); navigate(l.href); }}
+            >
+              {l.label}
+            </a>
+          ))}
         </nav>
 
-        {/* Actions CTA & Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0 }}>
-          {/* Theme Toggle Button */}
+        <div className="nav-actions">
           <button
             onClick={onToggleTheme}
-            className="btn btn-secondary"
-            style={{
-              padding: '0.55rem',
-              borderRadius: 'var(--radius-md)',
-              color: 'var(--text-primary)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            className="icon-btn"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {theme === 'dark' ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#06b6d4" />}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          {/* Desktop Hire Me CTA */}
-          <button 
-            className="btn btn-primary desktop-hire-btn" 
-            style={{ padding: '0.55rem 1.1rem', fontSize: '0.85rem' }}
-            onClick={onCopyEmail}
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); navigate('#contact'); }}
+            className="btn btn-primary nav-cta"
           >
-            {emailCopied ? <Check size={16} /> : <Copy size={16} />}
-            <span>{emailCopied ? "Copied Email!" : "Hire Me"}</span>
-          </button>
+            Let's Talk
+          </a>
 
-          {/* Mobile Menu Toggle Button */}
-          <button 
-            className="mobile-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{
-              backgroundColor: 'var(--bg-secondary)',
-              border: '1px solid var(--border-subtle)',
-              color: 'var(--text-primary)',
-              borderRadius: 'var(--radius-md)',
-              cursor: 'pointer',
-              display: 'none',
-              padding: '0.55rem',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            aria-label="Toggle navigation menu"
+          <button
+            className="icon-btn mobile-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X size={22} color="#f59e0b" /> : <Menu size={22} color="var(--text-primary)" />}
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu Overlay */}
-      {mobileMenuOpen && (
-        <div className="mobile-menu-drawer">
-          <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            
-            {/* Status Pill in Mobile Menu */}
-            <div 
-              className="badge badge-emerald"
-              style={{ display: 'inline-flex', padding: '0.5rem 0.85rem', alignSelf: 'flex-start', cursor: 'pointer' }}
-              onClick={onCopyEmail}
-            >
-              <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10b981', boxShadow: '0 0 8px #10b981' }}></span>
-              <span>Available for Select Contracts</span>
-            </div>
-
-            {/* Links */}
-            <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <a href="#projects" onClick={(e) => { e.preventDefault(); handleNavClick('#projects'); }} className="mobile-nav-link">
-                ⚡ Projects Showcase
-              </a>
-              <a href="#sandbox" onClick={(e) => { e.preventDefault(); handleNavClick('#sandbox'); }} className="mobile-nav-link">
-                🛡️ Live Security Sandbox
-              </a>
-              <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('#services'); }} className="mobile-nav-link">
-                🤖 Core Services
-              </a>
-              <a href="#estimator" onClick={(e) => { e.preventDefault(); handleNavClick('#estimator'); }} className="mobile-nav-link">
-                📝 Custom Project Brief
-              </a>
-              <a href="#experience" onClick={(e) => { e.preventDefault(); handleNavClick('#experience'); }} className="mobile-nav-link">
-                💼 Experience & R&D
-              </a>
-              <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }} className="mobile-nav-link">
-                📧 Contact & Channels
-              </a>
-            </nav>
-
-            {/* Mobile Actions */}
-            <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <button 
-                className="btn btn-primary" 
-                style={{ width: '100%', padding: '0.8rem' }}
-                onClick={() => {
-                  onCopyEmail();
-                  setMobileMenuOpen(false);
-                }}
+      {menuOpen && (
+        <div className="mobile-menu">
+          <nav>
+            {links.map(l => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => { e.preventDefault(); navigate(l.href); }}
               >
-                {emailCopied ? <Check size={18} /> : <Copy size={18} />}
-                <span>{emailCopied ? "Email Copied!" : "Copy Contact Email"}</span>
-              </button>
-            </div>
-
-          </div>
+                {l.label}
+              </a>
+            ))}
+          </nav>
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); navigate('#contact'); }}
+            className="btn btn-primary"
+            style={{ width: '100%', marginTop: '0.5rem' }}
+          >
+            Let's Talk
+          </a>
         </div>
       )}
 
       <style>{`
-        .nav-link {
-          color: var(--text-secondary);
-          text-decoration: none;
-          font-size: 0.88rem;
-          font-weight: 500;
-          transition: var(--transition);
+        .navbar {
+          position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+          padding: 1rem 0;
+          transition: padding 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+          border-bottom: 1px solid transparent;
         }
-        .nav-link:hover {
-          color: var(--accent-amber);
+        .navbar--scrolled {
+          padding: 0.7rem 0;
+          background: ${theme === 'dark' ? 'rgba(10, 15, 26, 0.92)' : 'rgba(248, 250, 252, 0.92)'};
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom-color: var(--border-subtle);
         }
-        .mobile-nav-link {
+        .nav-inner {
+          display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+        }
+        .nav-brand {
+          font-family: var(--font-heading);
+          font-weight: 800; font-size: 1.1rem;
           color: var(--text-primary);
-          text-decoration: none;
-          font-size: 1.05rem;
-          font-weight: 600;
-          padding: 0.5rem 0;
-          border-bottom: 1px dashed var(--border-subtle);
-          display: flex;
-          alignItems: center;
+          text-decoration: none; letter-spacing: -0.03em;
+        }
+        .nav-links {
+          display: flex; gap: 2.25rem;
+        }
+        .nav-links a {
+          color: var(--text-muted); text-decoration: none;
+          font-size: 0.88rem; font-weight: 500; transition: color 0.15s ease;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-actions { display: flex; align-items: center; gap: 0.6rem; }
+        .icon-btn {
+          background: none; border: 1px solid var(--border-subtle);
+          color: var(--text-muted); padding: 0.45rem;
+          border-radius: var(--radius-sm); cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
           transition: var(--transition);
         }
-        .mobile-nav-link:hover {
-          color: var(--accent-amber);
+        .icon-btn:hover { border-color: var(--text-muted); color: var(--text-primary); }
+        .nav-cta { padding: 0.5rem 1rem; font-size: 0.82rem; }
+        .mobile-toggle { display: none; }
+        .mobile-menu {
+          position: fixed; top: 58px; left: 0; right: 0; bottom: 0;
+          background: var(--bg-primary); padding: 2rem 1.5rem;
+          display: flex; flex-direction: column;
+          z-index: 99;
+          animation: menuIn 0.2s ease;
         }
-        .mobile-menu-drawer {
-          position: fixed;
-          top: 65px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: var(--bg-primary);
-          z-index: 980;
-          overflow-y: auto;
-          animation: fadeIn 0.25s ease-in-out;
+        .mobile-menu nav {
+          display: flex; flex-direction: column; gap: 0;
         }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+        .mobile-menu nav a {
+          color: var(--text-primary); text-decoration: none;
+          font-size: 1.15rem; font-weight: 600;
+          padding: 1.1rem 0;
+          border-bottom: 1px solid var(--border-subtle);
+          transition: color 0.15s ease;
         }
-        @media (max-width: 1180px) {
-          .availability-pill { display: none !important; }
+        .mobile-menu nav a:hover { color: var(--accent-amber); }
+        @keyframes menuIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-        @media (max-width: 900px) {
-          .desktop-nav { display: none !important; }
-          .desktop-hire-btn { display: none !important; }
-          .mobile-toggle { display: flex !important; }
+        @media (max-width: 768px) {
+          .nav-links { display: none; }
+          .nav-cta { display: none; }
+          .mobile-toggle { display: flex; }
         }
       `}</style>
     </header>

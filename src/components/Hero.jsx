@@ -1,187 +1,98 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Shield, Cpu, Activity, Database, ArrowRight, MapPin, Briefcase, GraduationCap, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 
-export default function Hero({ onCopyEmail }) {
+export default function Hero() {
   return (
-    <section className="hero-section" style={{ paddingTop: '7.5rem', paddingBottom: '4rem', position: 'relative' }}>
+    <section style={{ paddingTop: '8rem', paddingBottom: '4.5rem' }}>
       <div className="container">
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '3rem',
-          alignItems: 'center'
-        }} className="hero-grid">
-          
-          {/* Left Column: Text & Intro */}
+        <div className="hero-grid">
           <div>
-            {/* Tagline Badge */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-              <span className="badge badge-amber">
-                <Briefcase size={13} />
-                <span>AI Engineer @ Tata Electronics</span>
-              </span>
-              <span className="badge badge-subtle">
-                <GraduationCap size={13} />
-                <span>NIT Warangal '25</span>
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="hero-headline" style={{
-              fontSize: 'clamp(1.85rem, 5.2vw, 3.4rem)',
-              lineHeight: 1.15,
-              marginBottom: '1.25rem',
-              letterSpacing: '-0.03em'
-            }}>
-              Architecting <span className="gradient-amber">Production AI Agents</span>, Custom ML & <span className="gradient-cyan">Enterprise Data Systems</span>
-            </h1>
-
-            {/* Bio Paragraph */}
-            <p className="hero-bio" style={{
-              fontSize: '1.05rem',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.65,
-              marginBottom: '1.75rem',
-              maxWidth: '640px'
-            }}>
-              Hi, I'm <strong>Aneesh Raj Donthi</strong>. I build end-to-end production AI & Data solutions—ranging from Autonomous Agentic AI, Text-to-Speech & Voice Models, Enterprise RAG, and Computer Vision to Real-Time Data Streaming (Kafka, Spark) and Machine Learning Systems.
-            </p>
-
-            {/* Location & Quick Info */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1rem',
-              fontSize: '0.85rem',
-              color: 'var(--text-muted)',
-              marginBottom: '2.25rem',
-              fontFamily: 'var(--font-mono)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <MapPin size={15} color="#06b6d4" />
-                <span>Bengaluru / Ahmedabad, India</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Activity size={15} color="#f59e0b" />
-                <span>Agentic AI / Voice / RAG / Vision / Kafka / PyTorch</span>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="hero-cta-buttons" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
-              <a href="#projects" className="btn btn-primary hero-btn">
-                <span>View Projects & Demos</span>
-                <ArrowRight size={18} />
+            <p className="hero-subtitle">{personalInfo.subtitle}</p>
+            <h1 className="hero-headline">{personalInfo.tagline}</h1>
+            <p className="hero-bio">{personalInfo.bio}</p>
+            <div className="hero-actions">
+              <a href="#projects" className="btn btn-primary">
+                See my work <ArrowRight size={15} />
               </a>
-              <a href="#estimator" className="btn btn-secondary hero-btn">
-                <span>Estimate Project Scope</span>
-              </a>
-              <a href="#contact" className="btn btn-outline hero-btn">
-                <Mail size={16} />
-                <span>Contact & Inquiry</span>
+              <a href="#contact" className="btn btn-ghost">
+                <Mail size={15} /> Get in touch
               </a>
             </div>
           </div>
 
-          {/* Right Column: Profile Picture & Interactive Telemetry Card */}
-          <div style={{ position: 'relative' }}>
-            <div className="glass-card hero-profile-card" style={{
-              padding: '1.25rem',
-              border: '1px solid var(--border-glow)',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.25)',
-              position: 'relative'
-            }}>
-              {/* Profile Image */}
-              <div style={{
-                position: 'relative',
-                borderRadius: 'var(--radius-md)',
-                overflow: 'hidden',
-                maxHeight: '380px',
-                border: '1px solid var(--border-subtle)'
-              }}>
-                <img 
-                  src={personalInfo.profilePic} 
-                  alt="Aneesh Raj Donthi - AI & Data Systems Engineer" 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'top center',
-                    display: 'block'
-                  }}
-                />
-                
-                {/* Overlay Badge */}
-                <div style={{
-                  position: 'absolute',
-                  bottom: '12px',
-                  left: '12px',
-                  right: '12px',
-                  background: 'rgba(9, 13, 22, 0.88)',
-                  backdropFilter: 'blur(12px)',
-                  padding: '0.75rem 1rem',
-                  borderRadius: 'var(--radius-sm)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#f8fafc' }}>
-                      Aneesh Raj Donthi
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: '#f59e0b', fontFamily: 'var(--font-mono)' }}>
-                      AI & Data Systems Engineer
-                    </div>
-                  </div>
-                  <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>
-                    Verified
-                  </span>
-                </div>
-              </div>
-
-              {/* Status Header inside card */}
-              <div style={{
-                marginTop: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                fontSize: '0.78rem',
-                fontFamily: 'var(--font-mono)',
-                color: 'var(--text-muted)'
-              }}>
-                <span>STATUS: ACTIVE FREELANCER</span>
-                <span style={{ color: '#10b981' }}>● ONLINE</span>
-              </div>
+          <div className="hero-photo-col">
+            <div className="hero-photo-wrapper">
+              <img
+                src={personalInfo.profilePic}
+                alt={personalInfo.name}
+                className="hero-photo"
+              />
             </div>
           </div>
-
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 960px) {
-          .hero-section {
-            padding-top: 6.5rem !important;
-            padding-bottom: 3rem !important;
-          }
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.25rem !important;
-          }
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 3.5rem;
+          align-items: center;
         }
-        @media (max-width: 640px) {
-          .hero-cta-buttons {
-            flex-direction: column !important;
-            width: 100% !important;
+        .hero-subtitle {
+          font-size: 0.88rem;
+          color: var(--accent-amber);
+          font-weight: 600;
+          margin-bottom: 1.25rem;
+        }
+        [data-theme="light"] .hero-subtitle {
+          color: var(--accent-cyan);
+        }
+        .hero-headline {
+          font-size: clamp(2.1rem, 5vw, 3.2rem);
+          line-height: 1.12;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.035em;
+          max-width: 560px;
+        }
+        .hero-bio {
+          font-size: 1.02rem;
+          color: var(--text-secondary);
+          line-height: 1.75;
+          margin-bottom: 2.25rem;
+          max-width: 500px;
+        }
+        .hero-actions {
+          display: flex; flex-wrap: wrap; gap: 0.75rem;
+        }
+        .hero-photo-col {
+          display: flex; justify-content: flex-end;
+        }
+        .hero-photo-wrapper {
+          width: 100%;
+          max-width: 360px;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          border: 1px solid var(--border-subtle);
+        }
+        .hero-photo {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: cover;
+          object-position: top center;
+        }
+        @media (max-width: 768px) {
+          .hero-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            text-align: center;
           }
-          .hero-btn {
-            width: 100% !important;
-          }
-          .hero-bio {
-            font-size: 0.98rem !important;
-          }
+          .hero-bio { max-width: 100%; }
+          .hero-actions { justify-content: center; }
+          .hero-photo-col { justify-content: center; order: -1; }
+          .hero-photo-wrapper { max-width: 240px; }
         }
       `}</style>
     </section>
