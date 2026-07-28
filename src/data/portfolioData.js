@@ -9,7 +9,12 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/aneeshrajdonthi",
   github: "https://github.com/aneeshrajdonthi",
   profilePic: "/profilepic.jpg",
-  bio: "AI Engineer at Tata Electronics and NIT Warangal alum. I build end-to-end production AI — autonomous agents, RAG systems, real-time data pipelines, ML monitoring, and computer vision. Open to select freelance projects."
+  bio: "AI Engineer at Tata Electronics and NIT Warangal alum. I build end-to-end production AI — autonomous agents, RAG systems, real-time data pipelines, ML monitoring, and computer vision. Open to select freelance projects.",
+  stats: [
+    { value: "4", label: "Projects shipped" },
+    { value: "3", label: "Internships" },
+    { value: "9+", label: "Months at Tata" }
+  ]
 };
 
 export const projects = [
@@ -90,45 +95,66 @@ export const projects = [
 export const services = [
   {
     id: "agentic-ai",
-    title: "AI Agents & Automation",
+    title: "Agentic AI & Automation",
     icon: "Bot",
     description: "Autonomous agents for email triage, scheduling, data processing, and multi-step workflows with tool-calling and MCP integration.",
-    tech: ["LangChain", "FastAPI", "Gemini", "GPT-4", "MCP"]
+    tech: ["LangChain", "CrewAI", "FastAPI", "Gemini", "MCP"]
   },
   {
-    id: "tts-audio",
-    title: "Voice AI & Speech",
-    icon: "Mic",
-    description: "Real-time voice interfaces, speech synthesis, transcription pipelines, and multilingual audio processing for web and mobile apps.",
-    tech: ["ElevenLabs", "Whisper", "WebSockets", "FastAPI"]
+    id: "ml",
+    title: "Machine Learning",
+    icon: "TrendingUp",
+    description: "Predictive models, classification, regression, anomaly detection, and recommendation systems using production-grade ML pipelines.",
+    tech: ["Scikit-Learn", "XGBoost", "SciPy", "Pandas"]
+  },
+  {
+    id: "dl",
+    title: "Deep Learning",
+    icon: "Layers",
+    description: "Neural network architectures — CNNs, transformers, transfer learning, and fine-tuning for custom datasets and domain-specific tasks.",
+    tech: ["PyTorch", "TensorFlow", "Keras", "Hugging Face"]
+  },
+  {
+    id: "data-science",
+    title: "Data Science & Analytics",
+    icon: "BarChart3",
+    description: "Exploratory analysis, statistical modeling, hypothesis testing, and interactive dashboards that turn raw data into business decisions.",
+    tech: ["Pandas", "Plotly", "Power BI", "Tableau", "SQL"]
+  },
+  {
+    id: "data-engineering",
+    title: "Data Engineering",
+    icon: "Database",
+    description: "End-to-end data pipelines — real-time CDC streaming, ETL workflows, data warehousing, and database optimization at scale.",
+    tech: ["Kafka", "Spark", "Debezium", "Airflow", "PostgreSQL"]
   },
   {
     id: "rag-systems",
     title: "RAG & Vector Search",
-    icon: "Database",
-    description: "Turn document repositories into accurate, cited knowledge engines with hybrid vector-relational architectures and context-preserving chunking.",
-    tech: ["ChromaDB", "Qdrant", "FastAPI", "React", "Docker"]
-  },
-  {
-    id: "ai-security",
-    title: "AI Security & Guardrails",
-    icon: "ShieldAlert",
-    description: "Prompt injection firewalls, PII redaction middleware, hallucination evaluators, and compliance audit logging for production LLM applications.",
-    tech: ["FastAPI", "LangChain", "LlamaIndex", "Regex"]
+    icon: "Search",
+    description: "Hybrid vector-relational search engines with cited answers, context-preserving chunking, and zero-hallucination document Q&A.",
+    tech: ["ChromaDB", "Qdrant", "LangChain", "Embeddings"]
   },
   {
     id: "computer-vision",
     title: "Computer Vision",
     icon: "Eye",
-    description: "Industrial quality inspection, object detection, defect classification, and deep learning pipelines deployed on cloud or edge infrastructure.",
-    tech: ["OpenCV", "PyTorch", "TensorFlow", "AWS Lambda"]
+    description: "Object detection, image classification, defect inspection, and visual processing pipelines for industrial and commercial use.",
+    tech: ["OpenCV", "PyTorch", "YOLO", "AWS Rekognition"]
   },
   {
-    id: "data-streaming",
-    title: "Data Pipelines & Analytics",
-    icon: "Activity",
-    description: "Real-time CDC streaming, ML model training, predictive analytics, and interactive operational dashboards for business intelligence.",
-    tech: ["Kafka", "Spark", "Debezium", "Plotly Dash", "Power BI"]
+    id: "nlp-voice",
+    title: "NLP & Voice AI",
+    icon: "Mic",
+    description: "Text processing, sentiment analysis, speech synthesis, real-time transcription, and conversational AI interfaces.",
+    tech: ["Whisper", "ElevenLabs", "spaCy", "Transformers"]
+  },
+  {
+    id: "web-dev",
+    title: "Full-Stack Web Dev",
+    icon: "Code",
+    description: "Responsive web applications with modern React frontends, Python/Node backends, REST/GraphQL APIs, and cloud deployment.",
+    tech: ["React", "Next.js", "FastAPI", "Node.js", "Docker"]
   }
 ];
 
@@ -171,16 +197,8 @@ export const experiences = [
 ];
 
 export const leadership = [
-  {
-    role: "General Secretary",
-    org: "NSS, NIT Warangal",
-    year: "2023"
-  },
-  {
-    role: "Head of Logistics",
-    org: "SpringSpree, NIT Warangal",
-    year: "2023"
-  }
+  { role: "General Secretary", org: "NSS, NIT Warangal", year: "2023" },
+  { role: "Head of Logistics", org: "SpringSpree, NIT Warangal", year: "2023" }
 ];
 
 export const certifications = [

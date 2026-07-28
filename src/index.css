@@ -194,6 +194,11 @@ a { color: inherit; }
   background: var(--bg-card);
 }
 
+.btn-sm {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.82rem;
+}
+
 /* Section Utilities */
 .section {
   padding: 5.5rem 0;
@@ -222,6 +227,33 @@ a { color: inherit; }
   font-size: 1.02rem;
   max-width: 540px;
   line-height: 1.7;
+}
+
+/* ──── Entrance Animations ──── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim { animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-d1 { animation-delay: 0s; }
+.anim-d2 { animation-delay: 0.08s; }
+.anim-d3 { animation-delay: 0.16s; }
+.anim-d4 { animation-delay: 0.24s; }
+.anim-d5 { animation-delay: 0.32s; }
+.anim-d6 { animation-delay: 0.4s; }
+
+/* ──── Scroll Reveal ──── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Toast */
