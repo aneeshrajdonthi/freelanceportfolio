@@ -1,6 +1,6 @@
 import React from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { ArrowRight, Mail, Briefcase, GraduationCap, Code2, Sparkles, Terminal } from 'lucide-react';
+import { ArrowRight, Mail, Briefcase, GraduationCap, Calendar, ShieldCheck, Terminal } from 'lucide-react';
 
 export default function Hero() {
   const coreSkills = [
@@ -20,33 +20,33 @@ export default function Hero() {
           {/* Left Main Intro Content */}
           <div className="hero-content">
             
-            {/* Role & Education Badges */}
+            {/* Top Availability Badge & Credentials */}
             <div className="hero-badges anim anim-d1">
+              <span className="badge badge-emerald" style={{ padding: '0.35rem 0.85rem', fontSize: '0.78rem' }}>
+                <Calendar size={13} />
+                <span>{personalInfo.availabilityBadge}</span>
+              </span>
               <span className="badge badge-amber">
                 <Briefcase size={13} />
                 <span>{personalInfo.currentRole}</span>
               </span>
-              <span className="badge badge-cyan">
-                <GraduationCap size={13} />
-                <span>NIT Warangal '25</span>
-              </span>
             </div>
 
-            {/* Headline */}
+            {/* Client Problem-First Headline */}
             <h1 className="hero-headline anim anim-d2">
-              Building <span className="text-highlight-amber">Production AI Agents</span>, ML Systems & <span className="text-highlight-cyan">Data Pipelines</span>
+              Building <span className="text-highlight-amber">Production AI Systems</span> — Without Trial & Error
             </h1>
 
-            {/* Bio Paragraph */}
+            {/* Outcome-Focused Tagline & Bio */}
             <p className="hero-bio anim anim-d3">
-              {personalInfo.bio}
+              {personalInfo.tagline}
             </p>
 
-            {/* Tech Stack Strip */}
+            {/* Core Tech Stack Strip */}
             <div className="hero-skills-wrapper anim anim-d4">
               <div className="hero-skills-label">
                 <Terminal size={14} />
-                <span>Core Tech Stack</span>
+                <span>Core Stack</span>
               </div>
               <div className="hero-skills-list">
                 {coreSkills.map((sk, idx) => (
@@ -57,15 +57,14 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* CTA Action Buttons */}
+            {/* Single Clear Primary Call To Action */}
             <div className="hero-actions anim anim-d5">
-              <a href="#projects" className="btn btn-primary hero-btn">
-                <span>Explore Work</span>
-                <ArrowRight size={16} />
+              <a href="#contact" className="btn btn-primary hero-btn" style={{ padding: '0.75rem 1.6rem', fontSize: '0.95rem' }}>
+                <span>Discuss Your Project</span>
+                <ArrowRight size={18} />
               </a>
-              <a href="#contact" className="btn btn-ghost hero-btn">
-                <Mail size={16} />
-                <span>Get in Touch</span>
+              <a href="#engagement" className="btn btn-ghost hero-btn">
+                <span>Engagement Models</span>
               </a>
             </div>
 
@@ -116,7 +115,6 @@ export default function Hero() {
           overflow: hidden;
         }
 
-        /* Ambient Glow Background Orbs */
         .hero-glow-1 {
           position: absolute;
           top: -80px;
@@ -169,10 +167,6 @@ export default function Hero() {
 
         .text-highlight-amber {
           color: var(--accent-amber);
-        }
-
-        .text-highlight-cyan {
-          color: var(--accent-cyan);
         }
 
         .hero-bio {

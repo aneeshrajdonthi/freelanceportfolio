@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectsShowcase from './components/ProjectsShowcase';
 import Services from './components/Services';
+import ClientFit from './components/ClientFit';
 import ExperienceTimeline from './components/ExperienceTimeline';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -51,6 +52,7 @@ export default function App() {
         <Hero />
         <ProjectsShowcase />
         <Services />
+        <ClientFit />
         <ExperienceTimeline />
         <ContactSection onCopyEmail={handleCopyEmail} emailCopied={emailCopied} />
       </main>

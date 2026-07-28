@@ -28,7 +28,8 @@ export default function Navbar({ theme, onToggleTheme }) {
 
   const links = [
     { label: 'Work', href: '#projects' },
-    { label: 'Services', href: '#services' },
+    { label: 'Capabilities', href: '#services' },
+    { label: 'Engagement', href: '#engagement' },
     { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -131,7 +132,7 @@ export default function Navbar({ theme, onToggleTheme }) {
           text-decoration: none; letter-spacing: -0.03em;
         }
         .nav-links {
-          display: flex; gap: 2.25rem;
+          display: flex; gap: 2rem;
         }
         .nav-links a {
           color: var(--text-muted); text-decoration: none;

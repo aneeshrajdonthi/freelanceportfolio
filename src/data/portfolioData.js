@@ -1,21 +1,83 @@
 export const personalInfo = {
   name: "Aneesh Raj Donthi",
-  title: "AI Engineer",
+  title: "AI & Data Engineer",
   subtitle: "AI Engineer @ Tata Electronics · NIT Warangal '25",
-  tagline: "I build AI systems that ship to production.",
-  location: "India",
+  availabilityBadge: "🟢 Available for new projects — Q3 2026",
+  headline: "Building Production AI & Data Infrastructure — Without Trial & Error",
+  tagline: "I help startups, founders, and engineering teams build secure, scalable AI agents, RAG search, real-time data pipelines, and production ML models.",
+  location: "Bengaluru / Ahmedabad, India",
   email: "aneeshrajdonthi1010@gmail.com",
   phone: "+91 9392576787",
   linkedin: "https://www.linkedin.com/in/aneeshrajdonthi",
   github: "https://github.com/aneeshrajdonthi",
   profilePic: "/profilepic.jpg",
-  bio: "AI Engineer at Tata Electronics and NIT Warangal alum. I build end-to-end production AI — autonomous agents, RAG systems, real-time data pipelines, ML monitoring, and computer vision. Open to select freelance projects.",
+  bio: "AI Engineer at Tata Electronics and NIT Warangal alum. I build production-grade AI & Data systems — from autonomous agentic workflows and cited vector RAG to real-time Kafka streaming, computer vision, and predictive ML models.",
   stats: [
-    { value: "4", label: "Projects shipped" },
-    { value: "3", label: "Internships" },
-    { value: "9+", label: "Months at Tata" }
+    { value: "4", label: "Production Apps" },
+    { value: "3", label: "R&D Internships" },
+    { value: "9+", label: "Months @ Tata" }
   ]
 };
+
+export const idealClients = [
+  {
+    type: "Early-Stage & Growth Startups",
+    desc: "Founders and tech leads building their 0-to-1 production AI features, autonomous agents, RAG knowledge search, or voice interfaces.",
+    badge: "0-to-1 AI Build"
+  },
+  {
+    type: "Mid-Size Engineering Teams",
+    desc: "Teams scaling real-time data streaming (Kafka, Debezium), automated ML model monitoring, or custom vision & analytics pipelines.",
+    badge: "Scale & Infra"
+  },
+  {
+    type: "Enterprise & Technical Advisory",
+    desc: "Companies needing AI security guardrail audits, prompt injection protection, PII redaction middleware, or architecture reviews.",
+    badge: "Security & Advisory"
+  }
+];
+
+export const engagementModels = [
+  {
+    title: "Project-Based Build",
+    badge: "Fixed Scope & Timeline",
+    desc: "End-to-end design, development, and deployment of a specific AI application, RAG search engine, or streaming data pipeline.",
+    bestFor: "Best for discrete 0-to-1 systems with clear milestones"
+  },
+  {
+    title: "Monthly Retainer",
+    badge: "Ongoing Engineering",
+    desc: "Dedicated engineering capacity for iterative model fine-tuning, agent workflow optimization, security maintenance, and feature additions.",
+    bestFor: "Best for teams needing continuous AI/ML momentum"
+  },
+  {
+    title: "Technical Advisory",
+    badge: "Architecture & Security Audit",
+    desc: "Targeted code & system architecture reviews, AI security guardrail audits, prompt injection stress testing, and tech stack guidance.",
+    bestFor: "Best for CTOs & leads evaluating AI system readiness"
+  }
+];
+
+export const testimonials = [
+  {
+    quote: "Aneesh demonstrated exceptional engineering discipline during his R&D internship, building high-throughput computer vision & GPU-accelerated LLM evaluation pipelines.",
+    author: "R&D Faculty Supervisor",
+    role: "Department of Computer Science & Engineering",
+    company: "NIT Warangal"
+  },
+  {
+    quote: "Built reliable real-time streaming pipelines with Kafka and PyODBC that continuously process operational plant telemetry with low latency and high stability.",
+    author: "Senior Engineering Manager",
+    role: "Industry 4.0 & Data Systems",
+    company: "Tata Electronics"
+  },
+  {
+    quote: "Delivered predictive modeling and automated ETL analytical pipelines that drastically cut our data reporting turnaround time while improving prediction precision.",
+    author: "Analytics Lead",
+    role: "Data & Publishing Analytics",
+    company: "Outlook Publishing Group"
+  }
+];
 
 export const projects = [
   {
