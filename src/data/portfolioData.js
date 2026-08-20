@@ -13,7 +13,7 @@ export const personalInfo = {
   profilePic: "/profilepic.jpg",
   bio: "AI Engineer at Tata Electronics and NIT Warangal alum. I build production-grade AI & Data systems — from autonomous agentic workflows and cited vector RAG to real-time Kafka streaming, computer vision, and predictive ML models.",
   stats: [
-    { value: "4", label: "Production Apps" },
+    { value: "5", label: "Production Apps" },
     { value: "3", label: "R&D Internships" },
     { value: "9+", label: "Months @ Tata" }
   ]
@@ -80,6 +80,23 @@ export const testimonials = [
 ];
 
 export const projects = [
+  {
+    id: "openpulse-ai",
+    title: "OpenPulse AI",
+    subtitle: "Real-time AST architecture visualizer & multi-model AI workspace",
+    category: "Dev Tooling",
+    description: "Parses public GitHub repositories into interactive System Design architecture topology flowcharts, AST file trees, SAST security vulnerability audits, and multi-provider BYOK (Bring Your Own Key) LLM issue resolution plans.",
+    techStack: ["React 18", "TypeScript", "Tailwind CSS v4", "Vite", "GitHub API", "Multi-LLM"],
+    highlights: [
+      "Interactive System Architecture topology flowchart & AST tree visualizer",
+      "Multi-Provider BYOK integration for Gemini, OpenAI, Claude, and Ollama Local",
+      "Automated SAST security auditor with inline AI refactoring patches",
+      "AI Issue Studio with live git diff generator and PR description builder"
+    ],
+    githubUrl: "https://github.com/aneeshrajdonthi/openpulse-ai",
+    liveUrl: "https://openpulse-ai.vercel.app/",
+    hasVideo: false
+  },
   {
     id: "driftshield-ai",
     title: "DriftShield AI",
