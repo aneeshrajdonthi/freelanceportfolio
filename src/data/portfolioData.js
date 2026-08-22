@@ -81,6 +81,40 @@ export const testimonials = [
 
 export const projects = [
   {
+    id: "causaltrace-ai",
+    title: "CausalTrace AI",
+    subtitle: "Causal ML, DAG discovery & prescriptive root-cause engine",
+    category: "Causal AI & DS",
+    description: "Standard ML predicts correlations; CausalTrace infers directional causation across industrial telemetry using continuous NOTEARS DAG optimization, Double Machine Learning (DML) for unconfounded treatment effects, prescriptive counterfactuals, and finite-sample Conformal Prediction bounds.",
+    techStack: ["Python 3.12", "FastAPI", "Polars", "Scikit-Learn", "React 18", "Docker"],
+    highlights: [
+      "Continuous NOTEARS DAG discovery with acyclicity constraints h(W) = 0",
+      "Double Machine Learning (DML) Neyman-orthogonal treatment effect estimation",
+      "Lagrangian counterfactual optimization for actionable operator guidance",
+      "Distribution-free Split Conformal Prediction with 95% & 99% coverage guarantees"
+    ],
+    githubUrl: "https://github.com/aneeshrajdonthi/causaltrace-ai",
+    liveUrl: "https://causaltrace-ai.vercel.app/",
+    hasVideo: false
+  },
+  {
+    id: "chronox-quant",
+    title: "ChronoX Quant",
+    subtitle: "Deep PatchTST transformer forecasting & regime anomaly engine",
+    category: "Quantitative ML",
+    description: "An open-source quantitative time-series intelligence platform combining channel-independent Patch Time-Series Transformers (PatchTST), Adaptive Conformal Inference (ACI) expanding uncertainty tunnels, Gaussian Hidden Markov Models (HMM) for regime classification, and Temporal SHAP.",
+    techStack: ["Python 3.12", "FastAPI", "PyTorch/Vectorized", "Polars", "React 18", "Docker"],
+    highlights: [
+      "PatchTST multi-step transformer forecasting with RevIN normalization",
+      "Adaptive Conformal Inference multi-step forecast tunnels (90%, 95%, 99%)",
+      "Gaussian HMM regime detector with Baum-Welch EM & Viterbi state path",
+      "Sub-2ms vectorized inference throughput with Temporal SHAP feature attributions"
+    ],
+    githubUrl: "https://github.com/aneeshrajdonthi/chronox-quant",
+    liveUrl: "https://chronox-quant.vercel.app/",
+    hasVideo: false
+  },
+  {
     id: "openpulse-ai",
     title: "OpenPulse AI",
     subtitle: "Real-time AST architecture visualizer & multi-model AI workspace",
